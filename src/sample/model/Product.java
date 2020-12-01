@@ -8,7 +8,7 @@ public class Product implements Comparable<Product>{
     private final String name;
     private final double price;
     private final String imgPath;
-    private final int quantity;
+    private int quantity;
     private final String currency;
 
     //TODO: zabezpieczenia związane z price, currency, slot
@@ -39,6 +39,14 @@ public class Product implements Comparable<Product>{
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public boolean isAvailable(){
+        return quantity > 0;
+    }
+
+    public void decrementQuantity(int amount){
+        this.quantity-= amount;
     }
 
     @Override

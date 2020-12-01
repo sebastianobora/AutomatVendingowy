@@ -8,24 +8,27 @@ public class DeviceResources {
     private ArrayList<Product> products = new ArrayList<>();
     private ArrayList<Coin> coins = new ArrayList<>();
 
-    public DeviceResources(ArrayList<String[]> allProducts, ArrayList<String[]> allCoins) {
+    public DeviceResources(ArrayList<String[]> allProducts, ArrayList<String[]> allCoins){
         Iterator<String[]> productsIterator = allProducts.iterator();
-        boolean[] uniqueProducts = new boolean[Constants.MAX_PRODUCTS];
+        ArrayList<Integer> uniqueProducts = new ArrayList<>();
 
         for(int i = 0; i < Constants.MAX_PRODUCTS ; i++){
             if(productsIterator.hasNext()){
                 String[] data = productsIterator.next();
 
-                if(!uniqueProducts[Integer.parseInt(data[0])]){
-                    uniqueProducts[Integer.parseInt(data[0])] = true;
+                if(!uniqueProducts.contains(Integer.parseInt(data[0]))){
+                    uniqueProducts.add(Integer.parseInt(data[0]));
                     Product product =
                             new Product(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]));
                     products.add(product);
+                }else{
+                    throw new IllegalArgumentException("Wrong slot in .csv file!");
                 }
             }else {
                 break;
             }
         }
+        products.sort(Product::compareTo);
 
         Iterator<String[]> coinsIterator = allCoins.iterator();
         ArrayList<Double> uniqueCoins = new ArrayList<>();
@@ -50,5 +53,18 @@ public class DeviceResources {
 
     public ArrayList<Coin> getCoins() {
         return coins;
+    }
+
+    public void setCoins(ArrayList<Coin> coins) {
+        this.coins = coins;
+    }
+
+    public Integer findProductBySlot(String slot){
+        for(Product product : products){
+            if(slot.equals(product.getSlot())){
+                return products.indexOf(product);
+            }
+        }
+        return null;
     }
 }

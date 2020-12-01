@@ -1,25 +1,25 @@
 slot, name, price, imgPath, quantity
-1, Snickers, 3.20, src/sample/img/snickers.png, 10
-2, Baton Wedel, 2.50, src/sample/img/baton-wedel.png, 4
-3, Coca Cola, 2.70, src/sample/img/cola.png, 7
-4, Cola Zero, 2.50, src/sample/img/cola-zero.png, 6
-5, Kinder Bueno, 3.00, src/sample/img/kinderbueno.png, 10
-6, Milkyway, 2.50, src/sample/img/milkyway.png, 16
-7, Pawełek, 2.00, src/sample/img/pawelek.png, 10
-8, Oshee, 3.20, src/sample/img/oshee.png, 6
-1, Snickers, 3.20, src/sample/img/snickers.png, 10
-2, Baton Wedel, 2.50, src/sample/img/baton-wedel.png, 4
-3, Coca Cola, 2.70, src/sample/img/cola.png, 7
-4, Cola Zero, 2.50, src/sample/img/cola-zero.png, 6
-5, Kinder Bueno, 3.00, src/sample/img/kinderbueno.png, 10
-6, Milkyway, 2.50, src/sample/img/milkyway.png, 16
-7, Pawełek, 2.00, src/sample/img/pawelek.png, 10
-8, Oshee, 3.20, src/sample/img/oshee.png, 6
-5, Kinder Bueno, 3.00, src/sample/img/kinderbueno.png, 10
-6, Milkyway, 2.50, src/sample/img/milkyway.png, 16
-7, Pawełek, 2.00, src/sample/img/pawelek.png, 10
-8, Oshee, 3.20, src/sample/img/oshee.png, 6
-5, Kinder Bueno, 3.00, src/sample/img/kinderbueno.png, 10
-6, Milkyway, 2.50, src/sample/img/milkyway.png, 16
-7, Pawełek, 2.00, src/sample/img/pawelek.png, 10
-8, Oshee, 3.20, src/sample/img/oshee.png, 6
+11, Snickers, 3.20, src/sample/img/productsImages/snickers.png, 10
+12, Baton Wedel, 2.50, src/sample/img/productsImages/baton-wedel.png, 4
+13, Coca Cola, 20.70, src/sample/img/productsImages/cola.png, 7
+14, Cola Zero, 2.50, src/sample/img/productsImages/cola-zero.png, 6
+15, Kinder Bueno, 3.00, src/sample/img/productsImages/kinderbueno.png, 10
+16, Milkyway, 2.50, src/sample/img/productsImages/milkyway.png, 16
+17, Pawełek, 2.00, src/sample/img/productsImages/pawelek.png, 10
+18, Oshee, 3.20, src/sample/img/productsImages/oshee.png, 6
+19, Snickers, 3.20, src/sample/img/productsImages/snickers.png, 10
+20, Baton Wedel, 2.50, src/sample/img/productsImages/baton-wedel.png, 4
+21, Coca Cola, 2.70, src/sample/img/productsImages/cola.png, 7
+22, Cola Zero, 2.50, src/sample/img/productsImages/cola-zero.png, 6
+23, Kinder Bueno, 3.00, src/sample/img/productsImages/kinderbueno.png, 10
+24, Milkyway, 2.50, src/sample/img/productsImages/milkyway.png, 16
+25, Pawełek, 2.00, src/sample/img/productsImages/pawelek.png, 10
+26, Oshee, 3.20, src/sample/img/productsImages/oshee.png, 6
+27, Kinder Bueno, 3.00, src/sample/img/productsImages/kinderbueno.png, 10
+28, Milkyway, 2.50, src/sample/img/productsImages/milkyway.png, 16
+29, Pawełek, 2.00, src/sample/img/productsImages/pawelek.png, 10
+30, Oshee, 3.20, src/sample/img/productsImages/oshee.png, 6
+31, Kinder Bueno, 3.00, src/sample/img/productsImages/kinderbueno.png, 10
+32, Milkyway, 2.50, src/sample/img/productsImages/milkyway.png, 16
+33, Pawełek, 2.00, src/sample/img/productsImages/pawelek.png, 10
+34, Milkyway, 2.50, src/sample/img/productsImages/milkyway.png, 0
