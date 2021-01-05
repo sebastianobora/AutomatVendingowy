@@ -1,24 +1,19 @@
 package sample.model;
 
 
-import sample.util.Constants;
-
-public class Product implements Comparable<Product>{
+public class Product implements Comparable<Product> {
     private final String slot;
     private final String name;
     private final double price;
     private final String imgPath;
     private int quantity;
-    private final String currency;
 
-    //TODO: zabezpieczenia związane z price, currency, slot
     public Product(String slot, String name, double price, String imgPath, int quantity) {
-            this.slot = slot;
-            this.name = name;
-            this.price = price;
-            this.imgPath = imgPath;
-            this.quantity = quantity;
-            this.currency = Constants.CURRENCY;
+        this.slot = slot;
+        this.name = name;
+        this.price = price;
+        this.imgPath = imgPath;
+        this.quantity = quantity;
     }
 
     public String getSlot() {
@@ -41,12 +36,12 @@ public class Product implements Comparable<Product>{
         return quantity;
     }
 
-    public boolean isAvailable(){
+    public boolean isAvailable() {
         return quantity > 0;
     }
 
-    public void decrementQuantity(int amount){
-        this.quantity-= amount;
+    public void decrementQuantity() {
+        this.quantity -= 1;
     }
 
     @Override

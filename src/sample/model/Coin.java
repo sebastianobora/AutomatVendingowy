@@ -4,14 +4,15 @@ import sample.util.Constants;
 
 import java.util.Arrays;
 
-public class Coin {
-    public static final Double[] valuesTab = {0.01, 0.02, 0.05, 0.10, 0.20, 0.50, 1.00, 2.00, 5.00};
+public class Coin implements Comparable<Coin> {
+    private static final Double[] denominations = {0.01, 0.02, 0.05, 0.10, 0.20, 0.50, 1.00, 2.00, 5.00};
+    private static final String coinImgPath = "src/sample/img/appImages/coin.png";
     private final String currency;
     private final double nominal;
     private int quantity;
 
     public Coin(double nominal, int quantity) {
-        if(!Arrays.asList(valuesTab).contains(nominal) && quantity < 0){
+        if (!Arrays.asList(denominations).contains(nominal) && quantity < 0) {
             throw new IllegalArgumentException("Wrong nominal or quantity!");
         }
         this.nominal = nominal;
@@ -19,12 +20,8 @@ public class Coin {
         this.currency = Constants.CURRENCY;
     }
 
-    public Coin getCopy(){
+    public Coin getCopy() {
         return new Coin(this.getNominal(), this.getQuantity());
-    }
-
-    public String getCurrency() {
-        return currency;
     }
 
     public double getNominal() {
@@ -35,16 +32,25 @@ public class Coin {
         return quantity;
     }
 
-    public void incrementQuantity(){
+    public void incrementQuantity() {
         this.quantity++;
     }
 
-    public void decrementQuantity(int amount){
-        this.quantity-= amount;
+    public void decrementQuantity(int amount) {
+        this.quantity -= amount;
+    }
+
+    public static String getCoinImgPath() {
+        return coinImgPath;
     }
 
     @Override
     public String toString() {
         return String.format("%.2f" + " " + currency, nominal);
+    }
+
+    @Override
+    public int compareTo(Coin o) {
+        return Double.compare(this.nominal, o.nominal);
     }
 }
