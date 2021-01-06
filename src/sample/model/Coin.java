@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Coin implements Comparable<Coin> {
     private static final Double[] denominations = {0.01, 0.02, 0.05, 0.10, 0.20, 0.50, 1.00, 2.00, 5.00};
-    private static final String coinImgPath = "src/sample/img/appImages/coin.png";
+    private static final String imgPath = "src/sample/img/appImages/coin.png";
     private final String currency;
     private final double nominal;
     private int quantity;
@@ -40,8 +40,8 @@ public class Coin implements Comparable<Coin> {
         this.quantity -= amount;
     }
 
-    public static String getCoinImgPath() {
-        return coinImgPath;
+    public static String getImgPath() {
+        return imgPath;
     }
 
     @Override

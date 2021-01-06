@@ -1,6 +1,5 @@
 package sample.dao;
 
-import javafx.scene.image.Image;
 import sample.model.Coin;
 import sample.model.Product;
 import sample.util.Constants;
@@ -16,11 +15,6 @@ public class DataAccessObject {
 
     public static DataAccessObject getInstance() {
         return INSTANCE;
-    }
-
-    public Image getImage(String imgPath) {
-        File file = new File(imgPath);
-        return new Image(file.toURI().toString());
     }
 
     public ArrayList<String> CSVCoinParser(ArrayList<Coin> coins) {

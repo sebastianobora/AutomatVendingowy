@@ -1,7 +1,7 @@
 slot, name, price, imgPath, quantity
 11, Snickers, 3.2, src/sample/img/productsImg/snickers.png, 0
-12, Baton Wedel, 2.5, src/sample/img/productsImg/baton-wedel.png, 14
-13, Coca Cola, 2.6, src/sample/img/productsImg/cola.png, 15
+12, Baton Wedel, 2.5, src/sample/img/productsImg/baton-wedel.png, 11
+13, Coca Cola, 2.6, src/sample/img/productsImg/cola.png, 9
 14, Cola Zero, 2.5, src/sample/img/productsImg/cola-zero.png, 15
 15, Kinder Bueno, 3.0, src/sample/img/productsImg/kinderbueno.png, 13
 16, Milkyway, 2.5, src/sample/img/productsImg/milkyway.png, 15
@@ -10,16 +10,16 @@ slot, name, price, imgPath, quantity
 19, Nesquik, 4.0, src/sample/img/productsImg/nesquik.png, 15
 20, Bounty, 2.5, src/sample/img/productsImg/bounty.png, 15
 21, Sok Kubus, 2.7, src/sample/img/productsImg/sok-kubus.png, 15
-22, Pawelek toffi, 2.5, src/sample/img/productsImg/pawelek-toffi.png, 13
+22, Pawelek toffi, 2.5, src/sample/img/productsImg/pawelek-toffi.png, 10
 23, Wafel wedel, 3.0, src/sample/img/productsImg/wedel-wafle.png, 15
 24, Sok Cappy, 2.5, src/sample/img/productsImg/sok-cappy.png, 15
-25, 4Move muesli, 2.0, src/sample/img/productsImg/4move-baton.png, 15
+25, 4Move muesli, 2.0, src/sample/img/productsImg/4move-baton.png, 14
 26, Monster pink, 7.0, src/sample/img/productsImg/monster.png, 14
 27, Baton 3BIT, 3.0, src/sample/img/productsImg/3-bit.png, 15
 28, Baton grzesiek, 2.0, src/sample/img/productsImg/grzeski.png, 15
 29, Baton góralek, 2.0, src/sample/img/productsImg/goralek.png, 15
 30, Nektar tymbark, 3.2, src/sample/img/productsImg/tymbark-multiwitamina.png, 15
-31, Baton WW, 3.0, src/sample/img/productsImg/WW.png, 14
+31, Baton WW, 3.0, src/sample/img/productsImg/WW.png, 12
 32, Baton GO-ON, 2.5, src/sample/img/productsImg/go-on-protein.png, 15
 33, Baton Muesli, 2.0, src/sample/img/productsImg/muesli-fit.png, 15
-34, Baton Muesli, 2.8, src/sample/img/productsImg/muesli-truskawka.png, 0
+34, Baton Muesli, 2.8, src/sample/img/productsImg/muesli-truskawka.png, 5

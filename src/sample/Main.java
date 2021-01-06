@@ -43,7 +43,6 @@ public class Main extends Application {
 
     @Override
     public void stop() {
-
         DataAccessObject dao = DataAccessObject.getInstance();
         DeviceResources deviceResources = DeviceResources.getInstance();
 

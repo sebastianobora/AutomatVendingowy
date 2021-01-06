@@ -28,6 +28,7 @@ import sample.model.DeviceResources;
 import sample.model.Product;
 import sample.util.Constants;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -35,10 +36,9 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     private static DeviceResources deviceResources;
-    private static DataAccessObject dao;
 
     private double coinsValue;
-    private boolean keyboardBlocked, productSelected, productTaken, changeTaken, error;
+    private boolean keyboardBlocked, productSelected, productTaken, withdrawTaken, error;
 
     private Stage popUp;
 
@@ -53,11 +53,11 @@ public class MainController implements Initializable {
     private MenuButton addCoinButton;
 
     @FXML
-    private ImageView takeChangeButton, takeProductButton;
+    private ImageView takeWithdrawButton, takeProductButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        dao = DataAccessObject.getInstance();
+        DataAccessObject dao = DataAccessObject.getInstance();
         deviceResources = DeviceResources.getInstance();
 
         try{
@@ -71,11 +71,11 @@ public class MainController implements Initializable {
 
         coinsValue = 0.0;
         productTaken = true;
-        changeTaken = true;
+        withdrawTaken = true;
         addItemsToSlots(deviceResources.getProducts());
         setAddCoinButton();
         takeProductButton.setOnMouseClicked(null);
-        takeChangeButton.setOnMouseClicked(null);
+        takeWithdrawButton.setOnMouseClicked(null);
         if(!error){
             cancel();
         }
@@ -120,7 +120,7 @@ public class MainController implements Initializable {
                 nextItem = listIterator.next();
 
                 imageView = new ImageView();
-                image = dao.getImage(nextItem.getImgPath());
+                image = new Image(new File(nextItem.getImgPath()).toURI().toString());
 
                 imageView.setImage(image);
                 imageView.setFitHeight(80);
@@ -140,9 +140,9 @@ public class MainController implements Initializable {
         }
     }
 
-    public void keyboardClickInsertTopScreen(MouseEvent mouseEvent) {
+    public void keyboardClickToScreen(MouseEvent mouseEvent) {
         if (!keyboardBlocked) {
-            if (productTaken && changeTaken) {
+            if (productTaken && withdrawTaken) {
                 if (!productSelected) {
                     Button button = (Button) mouseEvent.getSource();
                     String number = button.getText();
@@ -159,10 +159,10 @@ public class MainController implements Initializable {
     public void cancel() {
         if(!error){
             if (coinsValue > 0) {
-                ArrayList<Coin> changeCoins = deviceResources.getChange(deviceResources.getCoins(), coinsValue);
+                ArrayList<Coin> withdrawCoins = deviceResources.getWithdraw(coinsValue);
                 coinsValue = 0;
-                setTakeChangeButton();
-                setChangePopUp(changeCoins);
+                setTakeWithdrawButton();
+                setWithdrawPopUp(withdrawCoins);
             }
             keyboardBlocked = false;
             productSelected = false;
@@ -188,18 +188,15 @@ public class MainController implements Initializable {
     }
 
     public void OKButton() {
-        if (changeTaken && productTaken) {
+        if (withdrawTaken && productTaken) {
             if (!keyboardBlocked) {
                 if (!topScreen.getText().equals("") &&
                         Integer.parseInt(topScreen.getText()) <= Constants.MAX_SLOT &&
                         Integer.parseInt(topScreen.getText()) >= Constants.MIN_SLOT) {
+                    Product currProduct = deviceResources.findProductBySlot(topScreen.getText());
                     if (!productSelected) {
                         productSelected = true;
-
-                        Integer index = deviceResources.findProductBySlot(topScreen.getText());
-                        if (index != null && deviceResources.getProducts().get(index).isAvailable()) {
-                            Product currProduct = deviceResources.getProducts().get(index);
-
+                        if (currProduct != null && currProduct.isAvailable()) {
                             middleScreen.setText(currProduct.getName());
                             leftBottomScreen.setText(String.format("%.2f", currProduct.getPrice()));
                             leftBottomScreenFloor.setText(Constants.CURRENCY);
@@ -207,12 +204,16 @@ public class MainController implements Initializable {
                             rightBottomScreenFloor.setText(Constants.CURRENCY);
                         } else {
                             topScreen.setText("Product");
-                            middleScreen.setText("unavailable");
+                            if(currProduct == null){
+                                middleScreen.setText("not exist");
+                            }else{
+                                middleScreen.setText("unavailable");
+                            }
                             keyboardBlocked = true;
                             delayedMethod(1.5, e -> cancel());
                         }
                     } else {
-                        purchase();
+                        purchase(currProduct);
                     }
                 } else {
                     middleScreen.setText("Wrong product");
@@ -235,34 +236,31 @@ public class MainController implements Initializable {
         deviceResources.getCoins().get(index).incrementQuantity();
     }
 
-    public void purchase() {
-        Integer productIndex = deviceResources.findProductBySlot(topScreen.getText());
-        double change = coinsValue - deviceResources.getProducts().get(productIndex).getPrice();
+    public void purchase(Product currProduct) {
+        double change = coinsValue - currProduct.getPrice();
         change = Math.round(change * 100d) / 100d;
 
         if (change >= 0) {
             productSelected = false;
-            if (deviceResources.isChangePossible(deviceResources.getCoins(), change)) {
-                changeTaken = false;
+            if (deviceResources.isWithdrawPossible(change)) {
+                withdrawTaken = false;
                 productTaken = false;
 
-                deviceResources.getProducts().get(productIndex).decrementQuantity();
-
-                ArrayList<Coin> changeCoins = deviceResources.getChange(deviceResources.getCoins(), change);
+                ArrayList<Coin> withdrawCoins = deviceResources.getWithdraw(change);
                 topScreen.setText("Take");
                 middleScreen.setText("product&change");
 
-                setTakeProductButton(productIndex);
+                setTakeProductButton(currProduct);
                 if (change > 0) {
-                    setTakeChangeButton();
-                    setChangePopUp(changeCoins);
+                    setTakeWithdrawButton();
+                    setWithdrawPopUp(withdrawCoins);
                 } else {
-                    changeTaken = true;
+                    withdrawTaken = true;
                 }//TODO ? nie musi być else i po prostu ustawić za ifem true?
             } else {
-                ArrayList<Coin> changeCoins = deviceResources.getChange(deviceResources.getCoins(), coinsValue);
-                setTakeChangeButton();
-                setChangePopUp(changeCoins);
+                ArrayList<Coin> withdrawCoins = deviceResources.getWithdraw(coinsValue);
+                setTakeWithdrawButton();
+                setWithdrawPopUp(withdrawCoins);
                 topScreen.setText("Can't give");
                 middleScreen.setText("change");
             }
@@ -282,36 +280,39 @@ public class MainController implements Initializable {
         takeProductButton.setOnMouseClicked(null);
     }
 
-    public void takeChange() {
-        changeTaken = true;
-        takeChangeButton.setCursor(Cursor.DEFAULT);
-        takeChangeButton.setImage(null);
-        takeChangeButton.setOnMouseClicked(null);
+    public void takeWithdraw() {
+        withdrawTaken = true;
+        takeWithdrawButton.setCursor(Cursor.DEFAULT);
+        takeWithdrawButton.setImage(null);
+        takeWithdrawButton.setOnMouseClicked(null);
         popUp.show();
     }
 
-    public void setTakeProductButton(Integer productIndex) {
-        Image image = dao.getImage(deviceResources.getProducts().get(productIndex).getImgPath());
-        takeProductButton.setOnMouseClicked(e->takeProduct());
+    public void setTakeProductButton(Product currProduct) {
+        Image image = new Image(new File(currProduct.getImgPath()).toURI().toString());
+        takeProductButton.setOnMouseClicked(e->{
+            takeProduct();
+            currProduct.decrementQuantity();
+        });
         takeProductButton.setCursor(Cursor.OPEN_HAND);
         takeProductButton.setImage(image);
     }
 
-    public void setTakeChangeButton() {
-        Image image = dao.getImage(Coin.getCoinImgPath());
-        takeChangeButton.setOnMouseClicked(e->takeChange());
-        takeChangeButton.setCursor(Cursor.OPEN_HAND);
-        takeChangeButton.setImage(image);
+    public void setTakeWithdrawButton() {
+        Image image = new Image(new File(Coin.getImgPath()).toURI().toString());
+        takeWithdrawButton.setOnMouseClicked(e-> takeWithdraw());
+        takeWithdrawButton.setCursor(Cursor.OPEN_HAND);
+        takeWithdrawButton.setImage(image);
     }
 
-    public void setChangePopUp(ArrayList<Coin> changeCoins) {
+    public void setWithdrawPopUp(ArrayList<Coin> withdrawCoins) {
         Label coins = new Label();
-        for (Coin coin : changeCoins) {
+        for (Coin coin : withdrawCoins) {
             coins.setText(coins.getText() + coin.toString() + " : " + coin.getQuantity() + "\n");
         }
 
         popUp = new Stage();
-        popUp.setTitle("Change");
+        popUp.setTitle("Withdraw");
 
         StackPane stackPane = new StackPane();
         stackPane.setPrefSize(135, 135);

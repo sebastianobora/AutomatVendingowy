@@ -59,7 +59,9 @@ public class DeviceResources {
     public void setProducts(ArrayList<String[]> allProducts) {
         Iterator<String[]> productsIterator = allProducts.iterator();
         ArrayList<Integer> uniqueProducts = new ArrayList<>();
-
+        if(allProducts.isEmpty()){
+            throw new IllegalArgumentException("No products found!");
+        }
         for (int i = 0; i < Constants.MAX_PRODUCTS; i++) {
             if (productsIterator.hasNext()) {
                 String[] data = productsIterator.next();
@@ -83,6 +85,9 @@ public class DeviceResources {
     public void setCoins(ArrayList<String[]> allCoins) {
         Iterator<String[]> coinsIterator = allCoins.iterator();
         ArrayList<Double> uniqueCoins = new ArrayList<>();
+        if(allCoins.isEmpty()){
+            throw new IllegalArgumentException("No coins found!");
+        }
 
         for (int i = 0; i < Constants.MAX_COINS; i++) {
             if (coinsIterator.hasNext()) {
@@ -111,16 +116,16 @@ public class DeviceResources {
         return coins;
     }
 
-    public Integer findProductBySlot(String slot) {
+    public Product findProductBySlot(String slot) {
         for (Product product : products) {
             if (slot.equals(product.getSlot())) {
-                return products.indexOf(product);
+                return product;
             }
         }
         return null;
     }
 
-    public boolean isChangePossible(ArrayList<Coin> coins, double change) {
+    public boolean isWithdrawPossible(double change) {
         ArrayList<Coin> coinsCopy = new ArrayList<>();
         for (Coin coin : coins) {
             coinsCopy.add(coin.getCopy());
@@ -128,7 +133,10 @@ public class DeviceResources {
 
         for (int i = coinsCopy.size() - 1; i >= 0; i--) {
             int quotient = (int) (Math.floor(change / coinsCopy.get(i).getNominal()));
-            if (quotient >= 1 && coinsCopy.get(i).getQuantity() >= quotient) {
+            if (quotient >= 1 && coinsCopy.get(i).getQuantity() >= 0) {
+                if(coinsCopy.get(i).getQuantity() < quotient){
+                    quotient = coinsCopy.get(i).getQuantity();
+                }
                 coinsCopy.get(i).decrementQuantity(quotient);
                 change -= coinsCopy.get(i).getNominal() * quotient;
                 change = Math.round(change * 100d) / 100d;
@@ -137,15 +145,18 @@ public class DeviceResources {
         return change == 0;
     }
 
-    public ArrayList<Coin> getChange(ArrayList<Coin> coins, double change) {
+    public ArrayList<Coin> getWithdraw(double change) {
         ArrayList<Coin> changeCoins = new ArrayList<>();
 
         for (int i = coins.size() - 1; i >= 0; i--) {
             int quotient = (int) (Math.floor(change / coins.get(i).getNominal()));
-            if (quotient >= 1 && coins.get(i).getQuantity() >= quotient) {
-                changeCoins.add(new Coin(coins.get(i).getNominal(), (int) (Math.floor(change / coins.get(i).getNominal()))));
-                coins.get(i).decrementQuantity((int) (Math.floor(change / coins.get(i).getNominal())));
-                change -= coins.get(i).getNominal() * Math.floor(change / coins.get(i).getNominal());
+            if (quotient >= 1 && coins.get(i).getQuantity() >= 0) {
+                    if(coins.get(i).getQuantity() < quotient){
+                        quotient = coins.get(i).getQuantity();
+                    }
+                changeCoins.add(new Coin(coins.get(i).getNominal(), quotient));
+                coins.get(i).decrementQuantity(quotient);
+                change -= coins.get(i).getNominal() * quotient;
                 change = Math.round(change * 100d) / 100d;
             }
         }
