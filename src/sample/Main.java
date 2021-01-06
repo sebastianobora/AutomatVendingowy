@@ -12,16 +12,6 @@ import sample.util.Constants;
 
 public class Main extends Application {
 
-    private static Stage MainStage;
-
-    public static Stage getMainStage() {
-        return MainStage;
-    }
-
-    private void setMainStage(Stage primaryStage) {
-        Main.MainStage = primaryStage;
-    }
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -29,16 +19,15 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        setMainStage(primaryStage);
-        MainStage.setTitle("Automat Vendingowy");
+        primaryStage.setTitle("Automat Vendingowy");
 
         Parent mainRoot = FXMLLoader.load(getClass().getResource("resources/main.fxml"));
 
         Scene mainScene = new Scene(mainRoot);
-        MainStage.initStyle(StageStyle.DECORATED);
-        MainStage.setScene(mainScene);
-        MainStage.setResizable(false);
-        MainStage.show();
+        primaryStage.initStyle(StageStyle.DECORATED);
+        primaryStage.setScene(mainScene);
+        primaryStage.setResizable(false);
+        primaryStage.show();
     }
 
     @Override

@@ -1,287 +1,180 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.*?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity"
-      prefHeight="660.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/11.0.1"
-      fx:controller="sample.controllers.MainController">
-    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0"
-          prefWidth="330.0" style="-fx-background-color: white;">
-        <GridPane fx:id="gridPaneItems" alignment="CENTER" layoutX="-1.0" prefHeight="660.0" prefWidth="330.0"
-                  style="-fx-background-color: WHITE;">
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainController">
+    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="330.0" style="-fx-background-color: white;">
+        <GridPane fx:id="gridPaneItems" alignment="CENTER" layoutX="-1.0" prefHeight="660.0" prefWidth="330.0" style="-fx-background-color: WHITE;">
             <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity"
-                                   minWidth="-Infinity" prefWidth="82.5"/>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity"
-                                   minWidth="-Infinity" prefWidth="82.5"/>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity"
-                                   minWidth="-Infinity" prefWidth="82.5"/>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity"
-                                   minWidth="-Infinity" prefWidth="82.5"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="82.5" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="82.5" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="82.5" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="82.5" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="80.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="80.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="80.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="80.0" valignment="CENTER"
-                                vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="80.0" valignment="CENTER"
-                                vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="80.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0"
-                                valignment="CENTER" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="80.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="80.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="80.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="80.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="80.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="80.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
             </rowConstraints>
         </GridPane>
     </Pane>
     <Pane layoutX="330.0" prefHeight="660.0" prefWidth="120.0" style="-fx-background-color: lightgrey;">
-        <GridPane layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                  prefHeight="180.0" prefWidth="120.0">
+        <GridPane layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="180.0" prefWidth="120.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"
-                                   prefWidth="40.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"
-                                   prefWidth="40.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"
-                                   prefWidth="40.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="40.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="40.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="40.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
-                                vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
-                                vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
-                                vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
-                                vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
-                                vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
-                                vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0"
-                    minHeight="25.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0"
-                    text="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0" minHeight="25.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0" text="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0"
-                    minHeight="25.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0"
-                    text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                    GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0" minHeight="25.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0" text="2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0"
-                    minHeight="25.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0"
-                    text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER"
-                    GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0" minHeight="25.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0" text="3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0"
-                    minHeight="25.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0"
-                    text="4" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                    GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0" minHeight="25.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0" text="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0"
-                    minHeight="25.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0"
-                    text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                    GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0" minHeight="25.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0" text="5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0"
-                    minHeight="25.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0"
-                    text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                    GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0" minHeight="25.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0" text="6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0"
-                    minHeight="25.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0"
-                    text="7" GridPane.halignment="CENTER" GridPane.rowIndex="2"
-                    GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0" minHeight="25.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0" text="7" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0"
-                    minHeight="25.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0"
-                    text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2"
-                    GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0" minHeight="25.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0" text="8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0"
-                    minHeight="25.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0"
-                    text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2"
-                    GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0" minHeight="25.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0" text="9" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0"
-                    minHeight="25.0" minWidth="35.0" mnemonicParsing="false"
-                    onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0"
-                    text="0" GridPane.halignment="CENTER" GridPane.rowIndex="3"
-                    GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="35.0" minHeight="25.0" minWidth="35.0" mnemonicParsing="false" onMouseClicked="#keyboardClickToScreen" prefHeight="25.0" prefWidth="35.0" text="0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                    onMouseClicked="#OKButton" prefHeight="25.0" prefWidth="75.0" text="OK"
-                    GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER"
-                    GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#OKButton" prefHeight="25.0" prefWidth="75.0" text="OK" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                    onMouseClicked="#cancel" prefHeight="25.0" prefWidth="115.0" text="Cancel"
-                    GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4"
-                    GridPane.valignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#cancel" prefHeight="25.0" prefWidth="115.0" text="Cancel" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </Button>
-            <MenuButton fx:id="addCoinButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity"
-                        maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                        mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" GridPane.columnSpan="3"
-                        GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+            <MenuButton fx:id="addCoinButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="Arial" size="11.0"/>
+                    <Font name="Arial" size="11.0" />
                 </font>
             </MenuButton>
         </GridPane>
-        <Pane layoutX="5.0" layoutY="115.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-              minWidth="-Infinity" prefHeight="70.0" prefWidth="110.0" style="-fx-background-color: grey;">
-            <Label fx:id="topScreen" alignment="BOTTOM_CENTER" contentDisplay="CENTER" maxHeight="-Infinity"
-                   maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0"
-                   prefWidth="110.0">
+        <Pane layoutX="5.0" layoutY="115.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="110.0" style="-fx-background-color: grey;">
+            <Label fx:id="topScreen" alignment="BOTTOM_CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="110.0">
                 <font>
-                    <Font name="Arial" size="12.0"/>
+                    <Font name="Arial" size="12.0" />
                 </font>
                 <cursor>
-                    <Cursor fx:constant="DEFAULT"/>
+                    <Cursor fx:constant="DEFAULT" />
                 </cursor>
             </Label>
-            <Label fx:id="middleScreen" alignment="CENTER" contentDisplay="CENTER" layoutY="20.0"
-                   maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                   prefHeight="20.0" prefWidth="110.0" textAlignment="CENTER">
+            <Label fx:id="middleScreen" alignment="CENTER" contentDisplay="CENTER" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="110.0" textAlignment="CENTER">
                 <font>
-                    <Font name="Arial" size="12.0"/>
+                    <Font name="Arial" size="12.0" />
                 </font>
             </Label>
-            <Label fx:id="leftBottomScreen" contentDisplay="CENTER" layoutX="5.0" layoutY="40.0"
-                   maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                   prefHeight="15.0" prefWidth="35.0" textFill="BLUE">
+            <Label fx:id="leftBottomScreen" contentDisplay="CENTER" layoutX="5.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="35.0" textFill="BLUE">
                 <font>
-                    <Font name="Arial" size="12.0"/>
+                    <Font name="Arial" size="12.0" />
                 </font>
             </Label>
-            <Label fx:id="rightBottomScreen" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="70.0"
-                   layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                   minWidth="-Infinity" prefHeight="15.0" prefWidth="35.0" textFill="#b40000">
+            <Label fx:id="rightBottomScreen" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="70.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="35.0" textFill="#b40000">
                 <font>
-                    <Font name="Arial" size="12.0"/>
+                    <Font name="Arial" size="12.0" />
                 </font>
             </Label>
-            <Label fx:id="leftBottomScreenFloor" contentDisplay="CENTER" layoutX="5.0" layoutY="55.0"
-                   maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                   prefHeight="15.0" prefWidth="35.0" textFill="BLUE">
+            <Label fx:id="leftBottomScreenFloor" contentDisplay="CENTER" layoutX="5.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="35.0" textFill="BLUE">
                 <font>
-                    <Font name="Arial" size="12.0"/>
+                    <Font name="Arial" size="12.0" />
                 </font>
             </Label>
-            <Label fx:id="rightBottomScreenFloor" alignment="CENTER_RIGHT" contentDisplay="CENTER"
-                   layoutX="70.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                   minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="35.0"
-                   textFill="#b40000">
+            <Label fx:id="rightBottomScreenFloor" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="70.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="35.0" textFill="#b40000">
                 <font>
-                    <Font name="Arial" size="12.0"/>
+                    <Font name="Arial" size="12.0" />
                 </font>
             </Label>
-            <Label fx:id="middleBottomScreenFloor" alignment="CENTER" contentDisplay="CENTER"
-                   layoutX="40.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                   minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="30.0"
-                   textAlignment="CENTER" textFill="YELLOW">
+            <Label fx:id="middleBottomScreenFloor" alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="30.0" textAlignment="CENTER" textFill="YELLOW">
                 <font>
-                    <Font name="Arial" size="12.0"/>
+                    <Font name="Arial" size="12.0" />
                 </font>
             </Label>
-            <Label fx:id="middleBottomScreen" alignment="CENTER" contentDisplay="CENTER" layoutX="40.0"
-                   layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                   minWidth="-Infinity" prefHeight="15.0" prefWidth="30.0" textAlignment="CENTER"
-                   textFill="#f8f800">
+            <Label fx:id="middleBottomScreen" alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="30.0" textAlignment="CENTER" textFill="#f8f800">
                 <font>
-                    <Font name="Arial" size="12.0"/>
+                    <Font name="Arial" size="12.0" />
                 </font>
             </Label>
         </Pane>
-        <Circle accessibleRole="IMAGE_VIEW" fill="WHITE" layoutX="60.0" layoutY="470.0"
-                onMouseClicked="#takeWithdraw" radius="40.0" stroke="BLACK" strokeLineJoin="BEVEL"
-                strokeType="INSIDE" strokeWidth="0.0"/>
-        <ImageView fx:id="takeWithdrawButton" fitHeight="70.0" fitWidth="70.0" layoutX="25.0" layoutY="435.0"
-                   onMouseClicked="#takeWithdraw" pickOnBounds="true" preserveRatio="true"/>
-        <Pane layoutX="20.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-              minWidth="-Infinity" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: WHITE;">
-            <ImageView fx:id="takeProductButton" accessibleRole="BUTTON" fitHeight="80.0" fitWidth="60.0"
-                       layoutX="10.0" onMouseClicked="#takeProduct" pickOnBounds="true"
-                       preserveRatio="true">
+        <Circle accessibleRole="IMAGE_VIEW" fill="WHITE" layoutX="60.0" layoutY="470.0" onMouseClicked="#takeWithdraw" radius="40.0" stroke="BLACK" strokeLineJoin="BEVEL" strokeType="INSIDE" strokeWidth="0.0" />
+        <ImageView fx:id="takeWithdrawButton" fitHeight="70.0" fitWidth="70.0" layoutX="25.0" layoutY="435.0" onMouseClicked="#takeWithdraw" pickOnBounds="true" preserveRatio="true" />
+        <Pane layoutX="20.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: WHITE;">
+            <ImageView fx:id="takeProductButton" accessibleRole="BUTTON" fitHeight="80.0" fitWidth="60.0" layoutX="10.0" onMouseClicked="#takeProduct" pickOnBounds="true" preserveRatio="true">
                 <cursor>
-                    <Cursor fx:constant="DEFAULT"/>
+                    <Cursor fx:constant="DEFAULT" />
                 </cursor>
             </ImageView>
         </Pane>

@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -41,6 +42,9 @@ public class MainController implements Initializable {
     private boolean keyboardBlocked, productSelected, productTaken, withdrawTaken, error;
 
     private Stage popUp;
+
+    @FXML
+    private Pane mainPane;
 
     @FXML
     private GridPane gridPaneItems;
@@ -256,7 +260,7 @@ public class MainController implements Initializable {
                     setWithdrawPopUp(withdrawCoins);
                 } else {
                     withdrawTaken = true;
-                }//TODO ? nie musi być else i po prostu ustawić za ifem true?
+                }
             } else {
                 ArrayList<Coin> withdrawCoins = deviceResources.getWithdraw(coinsValue);
                 setTakeWithdrawButton();
@@ -324,8 +328,8 @@ public class MainController implements Initializable {
         popUp.setResizable(false);
         popUp.setScene(popupScene);
         popUp.initStyle(StageStyle.DECORATED);
-        popUp.initOwner(Main.getMainStage());
-        popUp.setX(Main.getMainStage().getX() + 150);
-        popUp.setY(Main.getMainStage().getY() + 200);
+        popUp.initOwner(mainPane.getScene().getWindow());
+        //popUp.setX(mainPane.getScene().getWindow().getX() + 150);
+        //popUp.setY(mainPane.getScene().getWindow().getY() + 200);
     }
 }

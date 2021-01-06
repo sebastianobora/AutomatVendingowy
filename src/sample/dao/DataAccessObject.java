@@ -37,9 +37,6 @@ public class DataAccessObject {
                             product.getImgPath() + ", " +
                             product.getQuantity());
         }
-        for (String line : parsedProduct) {
-            System.out.println(line);
-        }
         return parsedProduct;
     }
 

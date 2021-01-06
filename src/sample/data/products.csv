@@ -1,7 +1,7 @@
 slot, name, price, imgPath, quantity
 11, Snickers, 3.2, src/sample/img/productsImg/snickers.png, 0
 12, Baton Wedel, 2.5, src/sample/img/productsImg/baton-wedel.png, 11
-13, Coca Cola, 2.6, src/sample/img/productsImg/cola.png, 9
+13, Coca Cola, 2.6, src/sample/img/productsImg/cola.png, 8
 14, Cola Zero, 2.5, src/sample/img/productsImg/cola-zero.png, 15
 15, Kinder Bueno, 3.0, src/sample/img/productsImg/kinderbueno.png, 13
 16, Milkyway, 2.5, src/sample/img/productsImg/milkyway.png, 15

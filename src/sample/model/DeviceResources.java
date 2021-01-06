@@ -146,7 +146,7 @@ public class DeviceResources {
     }
 
     public ArrayList<Coin> getWithdraw(double change) {
-        ArrayList<Coin> changeCoins = new ArrayList<>();
+        ArrayList<Coin> withdrawCoins = new ArrayList<>();
 
         for (int i = coins.size() - 1; i >= 0; i--) {
             int quotient = (int) (Math.floor(change / coins.get(i).getNominal()));
@@ -154,12 +154,12 @@ public class DeviceResources {
                     if(coins.get(i).getQuantity() < quotient){
                         quotient = coins.get(i).getQuantity();
                     }
-                changeCoins.add(new Coin(coins.get(i).getNominal(), quotient));
+                withdrawCoins.add(new Coin(coins.get(i).getNominal(), quotient));
                 coins.get(i).decrementQuantity(quotient);
                 change -= coins.get(i).getNominal() * quotient;
                 change = Math.round(change * 100d) / 100d;
             }
         }
-        return changeCoins;
+        return withdrawCoins;
     }
 }
