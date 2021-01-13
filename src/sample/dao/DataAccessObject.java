@@ -36,8 +36,7 @@ public class DataAccessObject {
                             product.getPrice() + ", " +
                             product.getImgPath() + ", " +
                             product.getQuantity());
-        }
-        return parsedProduct;
+        }        return parsedProduct;
     }
 
     public ArrayList<String[]> loadData(String filePath) {

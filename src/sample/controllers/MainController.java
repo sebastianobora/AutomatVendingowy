@@ -22,7 +22,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-import sample.Main;
 import sample.dao.DataAccessObject;
 import sample.model.Coin;
 import sample.model.DeviceResources;
@@ -42,6 +41,9 @@ public class MainController implements Initializable {
     private boolean keyboardBlocked, productSelected, productTaken, withdrawTaken, error;
 
     private Stage popUp;
+
+    @FXML
+    public Button ok;
 
     @FXML
     private Pane mainPane;
@@ -70,7 +72,9 @@ public class MainController implements Initializable {
         }catch(Exception e){
             error = true;
             keyboardBlocked = true;
-            middleScreen.setText(e.getMessage());
+            String[] message = e.getMessage().split("-");
+            topScreen.setText(message[0]);
+            middleScreen.setText(message[1]);
         }
 
         coinsValue = 0.0;
@@ -329,7 +333,5 @@ public class MainController implements Initializable {
         popUp.setScene(popupScene);
         popUp.initStyle(StageStyle.DECORATED);
         popUp.initOwner(mainPane.getScene().getWindow());
-        //popUp.setX(mainPane.getScene().getWindow().getX() + 150);
-        //popUp.setY(mainPane.getScene().getWindow().getY() + 200);
     }
 }

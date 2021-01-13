@@ -12,8 +12,11 @@ public class Coin implements Comparable<Coin> {
     private int quantity;
 
     public Coin(double nominal, int quantity) {
-        if (!Arrays.asList(denominations).contains(nominal) && quantity < 0) {
-            throw new IllegalArgumentException("Wrong nominal or quantity!");
+        if (!Arrays.asList(denominations).contains(nominal)) {
+            throw new IllegalArgumentException("Wrong nominal!-coin file");
+        }
+        if(quantity < 0 || quantity > Constants.MAX_COIN_QUANTITY){
+            throw new IllegalArgumentException("Wrong quantity!-coin file");
         }
         this.nominal = nominal;
         this.quantity = quantity;
@@ -42,6 +45,10 @@ public class Coin implements Comparable<Coin> {
 
     public static String getImgPath() {
         return imgPath;
+    }
+
+    public static Double[] getDenominations() {
+        return denominations;
     }
 
     @Override

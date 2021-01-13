@@ -23,6 +23,10 @@ public class DeviceResources {
         return !uniqueProducts.contains(Integer.parseInt(data));
     }
 
+    public boolean isUniqueCoin(String data, ArrayList<Double> uniqueCoins){
+        return !uniqueCoins.contains(Double.parseDouble(data));
+    }
+
     public boolean isDouble(String data){
         try{
             Double.parseDouble(data);
@@ -32,25 +36,10 @@ public class DeviceResources {
         }
     }
 
-    public boolean properNameLength(String productName){
-        return productName.length() <= Constants.MAX_PRODUCT_NAME_LENGTH;
-    }
-
-    public boolean properQuantity(String data){
+    public boolean isInt(String value){
         try{
-            return Integer.parseInt(data) >= 0 && Integer.parseInt(data) <= Constants.MAX_PRODUCT_QUANTITY;
-        }catch(NumberFormatException e){
-            return false;
-        }
-    }
-
-    public boolean isUniqueCoin(String data, ArrayList<Double> uniqueCoins){
-        return !uniqueCoins.contains(Double.parseDouble(data));
-    }
-
-    public boolean properCoinQuantity(String quantity){
-        try{
-            return Integer.parseInt(quantity) >= 0 && Integer.parseInt(quantity) <= Constants.MAX_COIN_QUANTITY;
+            Integer.parseInt(value);
+            return true;
         }catch(NumberFormatException e){
             return false;
         }
@@ -59,6 +48,8 @@ public class DeviceResources {
     public void setProducts(ArrayList<String[]> allProducts) {
         Iterator<String[]> productsIterator = allProducts.iterator();
         ArrayList<Integer> uniqueProducts = new ArrayList<>();
+        products.clear();
+
         if(allProducts.isEmpty()){
             throw new IllegalArgumentException("No products found!");
         }
@@ -66,11 +57,16 @@ public class DeviceResources {
             if (productsIterator.hasNext()) {
                 String[] data = productsIterator.next();
 
-                if (isUniqueProduct(data[0], uniqueProducts) && properNameLength(data[1]) && isDouble(data[2]) && properQuantity(data[4])) {
+                if (isInt(data[0]) && isUniqueProduct(data[0], uniqueProducts) && isDouble(data[2]) && isInt(data[4])) {
                     uniqueProducts.add(Integer.parseInt(data[0]));
-                    Product product =
+                    try{
+                        Product product =
                             new Product(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]));
-                    products.add(product);
+                        products.add(product);
+                    }catch(Exception e){
+                        products.clear();
+                        throw new IllegalArgumentException(e.getMessage());
+                    }
                 } else {
                     products.clear();
                     throw new IllegalArgumentException("Wrong product data!");
@@ -85,6 +81,8 @@ public class DeviceResources {
     public void setCoins(ArrayList<String[]> allCoins) {
         Iterator<String[]> coinsIterator = allCoins.iterator();
         ArrayList<Double> uniqueCoins = new ArrayList<>();
+        coins.clear();
+
         if(allCoins.isEmpty()){
             throw new IllegalArgumentException("No coins found!");
         }
@@ -92,10 +90,15 @@ public class DeviceResources {
         for (int i = 0; i < Constants.MAX_COINS; i++) {
             if (coinsIterator.hasNext()) {
                 String[] data = coinsIterator.next();
-                if (isUniqueCoin(data[0], uniqueCoins) && properCoinQuantity(data[1])) {
+                if (isUniqueCoin(data[0], uniqueCoins) && isInt(data[1])) {
                     uniqueCoins.add(Double.parseDouble(data[0]));
-                    Coin coin = new Coin(Double.parseDouble(data[0]), Integer.parseInt(data[1]));
-                    coins.add(coin);
+                    try{
+                        Coin coin = new Coin(Double.parseDouble(data[0]), Integer.parseInt(data[1]));
+                        coins.add(coin);
+                    }catch(Exception e){
+                        coins.clear();
+                        throw new IllegalArgumentException(e.getMessage());
+                    }
                 }else {
                     coins.clear();
                     throw new IllegalArgumentException("Wrong coins data!");
@@ -104,7 +107,6 @@ public class DeviceResources {
                 break;
             }
         }
-
         coins.sort(Coin::compareTo);
     }
 
@@ -114,6 +116,15 @@ public class DeviceResources {
 
     public ArrayList<Coin> getCoins() {
         return coins;
+    }
+
+    public double getSumOfCoins(){
+        double sum = 0;
+        for(Coin coin : coins){
+            sum+= coin.getNominal() * coin.getQuantity();
+            sum = Math.round(sum * 100d) / 100d;
+        }
+        return sum;
     }
 
     public Product findProductBySlot(String slot) {

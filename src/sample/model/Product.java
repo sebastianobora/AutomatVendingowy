@@ -1,6 +1,8 @@
 package sample.model;
 
 
+import sample.util.Constants;
+
 public class Product implements Comparable<Product> {
     private final String slot;
     private final String name;
@@ -9,6 +11,18 @@ public class Product implements Comparable<Product> {
     private int quantity;
 
     public Product(String slot, String name, double price, String imgPath, int quantity) {
+        if(name.length() > Constants.MAX_PRODUCT_NAME_LENGTH){
+            throw new IllegalArgumentException("Wrong nominal!-product file");
+        }
+        if(quantity < 0 || quantity > Constants.MAX_PRODUCT_QUANTITY){
+            throw new IllegalArgumentException("Wrong quantity!-product file");
+        }
+        if(price < 0 || price > Constants.MAX_PRODUCT_PRICE){
+            throw new IllegalArgumentException("Wrong price!-product file");
+        }
+        if(Integer.parseInt(slot) < Constants.MIN_SLOT || Integer.parseInt(slot) > Constants.MAX_SLOT){
+            throw new IllegalArgumentException("Wrong slot!-product file");
+        }
         this.slot = slot;
         this.name = name;
         this.price = price;
