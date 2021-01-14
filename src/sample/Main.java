@@ -18,13 +18,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        primaryStage.setTitle("Automat Vendingowy");
-
         Parent mainRoot = FXMLLoader.load(getClass().getResource("resources/main.fxml"));
 
         Scene mainScene = new Scene(mainRoot);
-        primaryStage.initStyle(StageStyle.DECORATED);
+        primaryStage.setTitle("Automat Vendingowy");
+        //primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.setScene(mainScene);
         primaryStage.setResizable(false);
         primaryStage.show();

@@ -43,9 +43,6 @@ public class MainController implements Initializable {
     private Stage popUp;
 
     @FXML
-    public Button ok;
-
-    @FXML
     private Pane mainPane;
 
     @FXML
@@ -333,5 +330,9 @@ public class MainController implements Initializable {
         popUp.setScene(popupScene);
         popUp.initStyle(StageStyle.DECORATED);
         popUp.initOwner(mainPane.getScene().getWindow());
+        System.out.println(mainPane.getScene().getWindow().getX());
+        System.out.println(mainPane.getScene().getWindow().getY());
+        popUp.setX(mainPane.getScene().getWindow().getX() + 157.5);
+        popUp.setY(mainPane.getScene().getWindow().getY() + 262.5);
     }
 }
