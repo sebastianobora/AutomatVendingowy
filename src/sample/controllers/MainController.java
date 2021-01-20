@@ -146,7 +146,7 @@ public class MainController implements Initializable {
     }
 
     public void keyboardClickToScreen(MouseEvent mouseEvent) {
-        if (!keyboardBlocked) {
+        if (!keyboardBlocked && topScreen.getText().length() < 2) {
             if (productTaken && withdrawTaken) {
                 if (!productSelected) {
                     Button button = (Button) mouseEvent.getSource();
@@ -163,7 +163,7 @@ public class MainController implements Initializable {
 
     public void cancel() {
         if(!error){
-            if (coinsValue > 0) {
+            if (coinsValue > 0 && !keyboardBlocked) {
                 ArrayList<Coin> withdrawCoins = deviceResources.getWithdraw(coinsValue);
                 coinsValue = 0;
                 setTakeWithdrawButton();
@@ -330,8 +330,7 @@ public class MainController implements Initializable {
         popUp.setScene(popupScene);
         popUp.initStyle(StageStyle.DECORATED);
         popUp.initOwner(mainPane.getScene().getWindow());
-        System.out.println(mainPane.getScene().getWindow().getX());
-        System.out.println(mainPane.getScene().getWindow().getY());
+
         popUp.setX(mainPane.getScene().getWindow().getX() + 157.5);
         popUp.setY(mainPane.getScene().getWindow().getY() + 262.5);
     }

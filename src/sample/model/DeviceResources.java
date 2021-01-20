@@ -32,7 +32,7 @@ public class DeviceResources {
             Double.parseDouble(data);
             return true;
         }catch(NumberFormatException e){
-            return false;
+            throw new IllegalArgumentException("Wrong value type-double required!");
         }
     }
 
@@ -41,7 +41,7 @@ public class DeviceResources {
             Integer.parseInt(value);
             return true;
         }catch(NumberFormatException e){
-            return false;
+            throw new IllegalArgumentException("Wrong value type-int required!");
         }
     }
 

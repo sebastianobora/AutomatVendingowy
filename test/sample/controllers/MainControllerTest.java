@@ -21,13 +21,13 @@ import java.util.concurrent.TimeoutException;
 @ExtendWith(ApplicationExtension.class)
 class MainControllerTest{
 
-    private final String okButton = "OK";
-    private final String addCoinButton = "#addCoinButton";
-    private final String middleScreen = "#middleScreen";
-    private final String rightBottomScreen = "#rightBottomScreen";
-    private final String topScreen = "#topScreen";
-    private final String middleBottomScreen = "#middleBottomScreen";
-    private final String middleBottomScreenFloor = "#middleBottomScreenFloor";
+    private final String OK_BUTTON = "OK";
+    private final String ADD_COIN_BUTTON = "#addCoinButton";
+    private final String MIDDLE_SCREEN = "#middleScreen";
+    private final String RIGHT_BOTTOM_SCREEN = "#rightBottomScreen";
+    private final String TOP_SCREEN = "#topScreen";
+    private final String MIDDLE_BOTTOM_SCREEN = "#middleBottomScreen";
+    private final String MIDDLE_BOTTOM_SCREEN_FLOOR = "#middleBottomScreenFloor";
 
     @Start
     private void start(Stage primaryStage) throws Exception {
@@ -42,28 +42,28 @@ class MainControllerTest{
 
     @Test
     void noChooseProductOk(FxRobot robot) {
-        robot.clickOn(LabeledMatchers.hasText(okButton));
-        FxAssert.verifyThat(middleScreen, LabeledMatchers.hasText("Wrong product"));
+        robot.clickOn(LabeledMatchers.hasText(OK_BUTTON));
+        FxAssert.verifyThat(MIDDLE_SCREEN, LabeledMatchers.hasText("Wrong product"));
     }
 
     @Test
     void addCoin(FxRobot robot) {
         robot.clickOn(LabeledMatchers.hasText(String.valueOf(1)));
         robot.clickOn(LabeledMatchers.hasText(String.valueOf(2)));
-        robot.clickOn(LabeledMatchers.hasText(okButton));
-        robot.clickOn(addCoinButton);
+        robot.clickOn(LabeledMatchers.hasText(OK_BUTTON));
+        robot.clickOn(ADD_COIN_BUTTON);
         robot.clickOn(LabeledMatchers.hasText("5,00 PLN"));
-        FxAssert.verifyThat(rightBottomScreen, LabeledMatchers.hasText("5,00"));
+        FxAssert.verifyThat(RIGHT_BOTTOM_SCREEN, LabeledMatchers.hasText("5,00"));
     }
 
     @Test
     void cancelAfterAddCoin(FxRobot robot){
         robot.clickOn(LabeledMatchers.hasText(String.valueOf(1)));
         robot.clickOn(LabeledMatchers.hasText(String.valueOf(2)));
-        robot.clickOn(LabeledMatchers.hasText(okButton));
-        robot.clickOn(addCoinButton);
+        robot.clickOn(LabeledMatchers.hasText(OK_BUTTON));
+        robot.clickOn(ADD_COIN_BUTTON);
         robot.clickOn(LabeledMatchers.hasText("5,00 PLN"));
-        FxAssert.verifyThat(rightBottomScreen, LabeledMatchers.hasText("5,00"));
+        FxAssert.verifyThat(RIGHT_BOTTOM_SCREEN, LabeledMatchers.hasText("5,00"));
     }
 
     @Test
@@ -73,39 +73,39 @@ class MainControllerTest{
 
         robot.clickOn(LabeledMatchers.hasText(String.valueOf(1)));
         robot.clickOn(LabeledMatchers.hasText(String.valueOf(2)));
-        robot.clickOn(LabeledMatchers.hasText(okButton));
-        FxAssert.verifyThat(topScreen, LabeledMatchers.hasText(product.getSlot()));
+        robot.clickOn(LabeledMatchers.hasText(OK_BUTTON));
+        FxAssert.verifyThat(TOP_SCREEN, LabeledMatchers.hasText(product.getSlot()));
     }
 
     @Test
     void selectedOkWithoutAddedCoins(FxRobot robot){
         robot.clickOn(LabeledMatchers.hasText(String.valueOf(1)));
         robot.clickOn(LabeledMatchers.hasText(String.valueOf(2)));
-        robot.clickOn(LabeledMatchers.hasText(okButton));
-        robot.clickOn(LabeledMatchers.hasText(okButton));
-        FxAssert.verifyThat(middleBottomScreen, LabeledMatchers.hasText("add"));
-        FxAssert.verifyThat(middleBottomScreenFloor, LabeledMatchers.hasText("coins"));
+        robot.clickOn(LabeledMatchers.hasText(OK_BUTTON));
+        robot.clickOn(LabeledMatchers.hasText(OK_BUTTON));
+        FxAssert.verifyThat(MIDDLE_BOTTOM_SCREEN, LabeledMatchers.hasText("add"));
+        FxAssert.verifyThat(MIDDLE_BOTTOM_SCREEN_FLOOR, LabeledMatchers.hasText("coins"));
     }
 
     @Test
     void notEnoughCoins(FxRobot robot){
         robot.clickOn(LabeledMatchers.hasText(String.valueOf(1)));
         robot.clickOn(LabeledMatchers.hasText(String.valueOf(2)));
-        robot.clickOn(LabeledMatchers.hasText(okButton));
-        robot.clickOn(addCoinButton);
+        robot.clickOn(LabeledMatchers.hasText(OK_BUTTON));
+        robot.clickOn(ADD_COIN_BUTTON);
         robot.clickOn(LabeledMatchers.hasText("1,00 PLN"));
-        robot.clickOn(LabeledMatchers.hasText(okButton));
-        FxAssert.verifyThat(middleBottomScreen, LabeledMatchers.hasText("add"));
-        FxAssert.verifyThat(middleBottomScreenFloor, LabeledMatchers.hasText("coins"));
+        robot.clickOn(LabeledMatchers.hasText(OK_BUTTON));
+        FxAssert.verifyThat(MIDDLE_BOTTOM_SCREEN, LabeledMatchers.hasText("add"));
+        FxAssert.verifyThat(MIDDLE_BOTTOM_SCREEN_FLOOR, LabeledMatchers.hasText("coins"));
     }
 
     @Test
     void keyboardCheck(FxRobot robot) {
         for(int i = 0; i <= 9; i++){
             robot.clickOn(LabeledMatchers.hasText(String.valueOf(i)));
-            FxAssert.verifyThat(topScreen, LabeledMatchers.hasText(String.valueOf(i)));
+            FxAssert.verifyThat(TOP_SCREEN, LabeledMatchers.hasText(String.valueOf(i)));
             Platform.runLater(
-                    () -> robot.lookup(topScreen).queryLabeled().setText("")
+                    () -> robot.lookup(TOP_SCREEN).queryLabeled().setText("")
             );
         }
     }

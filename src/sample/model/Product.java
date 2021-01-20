@@ -12,7 +12,7 @@ public class Product implements Comparable<Product> {
 
     public Product(String slot, String name, double price, String imgPath, int quantity) {
         if(name.length() > Constants.MAX_PRODUCT_NAME_LENGTH){
-            throw new IllegalArgumentException("Wrong nominal!-product file");
+            throw new IllegalArgumentException("Wrong name!-product file");
         }
         if(quantity < 0 || quantity > Constants.MAX_PRODUCT_QUANTITY){
             throw new IllegalArgumentException("Wrong quantity!-product file");
