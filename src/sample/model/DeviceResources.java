@@ -7,6 +7,7 @@ import java.util.Iterator;
 
 public class DeviceResources {
     private static final DeviceResources INSTANCE = new DeviceResources();
+
     private final ArrayList<Product> products;
     private final ArrayList<Coin> coins;
 
@@ -144,7 +145,7 @@ public class DeviceResources {
 
         for (int i = coinsCopy.size() - 1; i >= 0; i--) {
             int quotient = (int) (Math.floor(change / coinsCopy.get(i).getNominal()));
-            if (quotient >= 1 && coinsCopy.get(i).getQuantity() >= 0) {
+            if (quotient >= 1 && coinsCopy.get(i).getQuantity() > 0) {
                 if(coinsCopy.get(i).getQuantity() < quotient){
                     quotient = coinsCopy.get(i).getQuantity();
                 }
@@ -161,7 +162,7 @@ public class DeviceResources {
 
         for (int i = coins.size() - 1; i >= 0; i--) {
             int quotient = (int) (Math.floor(change / coins.get(i).getNominal()));
-            if (quotient >= 1 && coins.get(i).getQuantity() >= 0) {
+            if (quotient >= 1 && coins.get(i).getQuantity() > 0) {
                     if(coins.get(i).getQuantity() < quotient){
                         quotient = coins.get(i).getQuantity();
                     }

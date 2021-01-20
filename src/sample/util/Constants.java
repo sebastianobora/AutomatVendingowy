@@ -5,7 +5,7 @@ public final class Constants {
     public static final int MAX_PRODUCT_QUANTITY = 30;
     public static final int MAX_PRODUCTS = 24;
     public static final int MAX_PRODUCT_NAME_LENGTH = 19;
-    public static final double MAX_PRODUCT_PRICE = 50;
+    public static final double MAX_PRODUCT_PRICE = 20.0;
     public static final String PRODUCTS_PATH = "src/sample/data/products.csv";
     // COINS
     public static final int MAX_COINS = 9;
